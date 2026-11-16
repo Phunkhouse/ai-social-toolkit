@@ -1,0 +1,21 @@
+{
+  "project": "Example app",
+  "timeZone": "Europe/Prague",
+  "packageFolder": "/path/to/private/social-packages",
+  "languages": {
+    "cs": { "address": "ty" },
+    "en": { "variant": "en-GB" }
+  },
+  "networks": {
+    "facebook": { "accountId": null, "maxLength": null, "hashtags": { "min": 0, "max": 2 }, "requireLink": true },
+    "bluesky": { "accountId": null, "maxLength": null, "hashtags": { "min": 0, "max": 0 }, "requireLink": false }
+  },
+  "hashtags": { "allowed": ["#exampleapp"] },
+  "links": { "allowedPrefixes": ["https://example.org/"] },
+  "sources": { "excludedDomains": ["example-database.com"] },
+  "freshness": { "maxAgeHours": 168 },
+  "repetition": { "maxPostsPerSubject": 2 },
+  "lint": { "disable": [], "avoid": { "cs": ["revoluční"], "en": ["revolutionary"] } },
+  "projectCheck": null,
+  "trypost": { "label": "example-app" }
+}

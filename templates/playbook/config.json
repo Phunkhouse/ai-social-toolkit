@@ -1,0 +1,27 @@
+{
+  "project": "<project name>",
+  "timeZone": "Europe/Prague",
+  "packageFolder": "<absolute path to a private folder outside the repository>",
+  "languages": {
+    "cs": { "address": "ty" },
+    "en": { "variant": "en-GB" }
+  },
+  "networks": {
+    "instagram": { "accountId": null, "maxLength": null, "hashtags": { "min": 3, "max": 5 }, "requireLink": false },
+    "facebook": { "accountId": null, "maxLength": null, "hashtags": { "min": 0, "max": 2 }, "requireLink": true },
+    "threads": { "accountId": null, "maxLength": null, "hashtags": { "min": 0, "max": 1 }, "requireLink": false },
+    "bluesky": { "accountId": null, "maxLength": null, "hashtags": { "min": 0, "max": 0 }, "requireLink": false },
+    "x": { "accountId": null, "maxLength": null, "hashtags": { "min": 0, "max": 1 }, "requireLink": false }
+  },
+  "hashtags": { "allowed": ["#<project>"] },
+  "links": { "allowedPrefixes": ["https://<project domain>/"] },
+  "sources": { "excludedDomains": [] },
+  "freshness": { "maxAgeHours": 24 },
+  "repetition": { "maxPostsPerSubject": 2 },
+  "lint": {
+    "disable": [],
+    "avoid": { "cs": [], "en": [] }
+  },
+  "projectCheck": null,
+  "trypost": { "label": "<label for this project's drafts>" }
+}

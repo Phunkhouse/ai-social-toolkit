@@ -1,0 +1,20 @@
+{
+  "lang": "cs",
+  "note": "Mechanical warnings (W1) for Czech copy. Patterns are JavaScript regular expressions; (?<!\\p{L}) and (?!\\p{L}) are word boundaries that work with diacritics. A rule with 'max' warns only when it matches more than that many times. 'when' limits a rule to a project setting. Projects disable rules by id in config.json (lint.disable).",
+  "rules": [
+    { "id": "cs.gender-slash", "pattern": "\\p{L}+(?:/(?:a|á|y|i|ka|ky|ová)|\\((?:a|á|y|i|ka)\\))(?!\\p{L})", "flags": "iu", "message": "Rodové lomítko nebo závorka. Použij vazbu bez minulého příčestí, nebo mužský tvar jako výchozí." },
+    { "id": "cs.robotic-intro", "pattern": "^(?:ahoj|čau|zdravíme|dobrý den)[,!]?\\s+(?:tady|tu je|jsme)|vítejte na (?:našem )?profilu|s radostí (?:vám )?oznamujeme|dnes vám přinášíme|jsme (?:tu|tady) pro vás", "flags": "imu", "message": "Robotický úvod. Začni věcí." },
+    { "id": "cs.engagement-bait", "pattern": "co na to říká(?:te|š)\\?|souhlasí(?:te|š)\\?|dej(?:te)? (?:nám )?vědět v komentářích|napiš(?:te)? (?:nám )?do komentářů|označ(?:te)? kamaráda|sdílej(?:te)?,? ať", "flags": "iu", "message": "Výzva k interakci kvůli dosahu. Otázku jen tehdy, když stojí za odpověď." },
+    { "id": "cs.empty-praise", "pattern": "(?<!\\p{L})(?:unikátní|jedinečn\\p{L}*|nadčasov\\p{L}*|ikonick\\p{L}*|legendární)(?!\\p{L})", "flags": "iu", "message": "Prázdná chvála. Řekni, co to konkrétně dělá." },
+    { "id": "cs.pressure", "pattern": "nenech(?:te)? si (?:ujít|utéct)|(?<!\\p{L})neváhej(?:te)?(?!\\p{L})|(?<!\\p{L})neotálej(?:te)?(?!\\p{L})", "flags": "iu", "message": "Reklamní nátlak. Řekni proč a kdy." },
+    { "id": "cs.filler", "pattern": "v dnešní (?:uspěchané|rychlé|digitální) době|ponoř(?:te)? se do|na další úroveň|na konci dne|udělat rozdíl", "flags": "iu", "message": "Výplňová fráze nebo kalk z angličtiny." },
+    { "id": "cs.anglicism", "pattern": "must[- ]see|hidden gem|(?<!\\p{L})vibe(?!\\p{L})|game[- ]changer|(?<!\\p{L})banger(?!\\p{L})", "flags": "iu", "message": "Anglicismus mimo běžnou češtinu." },
+    { "id": "cs.intensifier", "pattern": "(?<!\\p{L})(?:naprosto|absolutně|totálně)(?!\\p{L})", "flags": "iu", "message": "Zesilovač, který nic nepřidává." },
+    { "id": "cs.ampm", "pattern": "\\d{1,2}(?::\\d{2})?\\s?(?:AM|PM)(?!\\p{L})", "flags": "iu", "message": "Čas ve 12hodinovém formátu. Piš 24hodinový: 19:30." },
+    { "id": "cs.english-quotes", "pattern": "\"[^\"\\n]{2,}\"|“[^”\\n]{2,}”", "flags": "u", "message": "Anglické uvozovky. Česky „takto“." },
+    { "id": "cs.address-vy", "when": { "address": "ty" }, "pattern": "(?<!\\p{L})(?:vám|vás|váš|vaše|vašeho|vaši|máte|můžete|najdete|chcete|víte|zajděte|přijďte|podívejte)(?!\\p{L})", "flags": "iu", "message": "Vykání v projektu, který tyká." },
+    { "id": "cs.address-ty", "when": { "address": "vy" }, "pattern": "(?<!\\p{L})(?:tě|tebe|tobě|tvůj|tvoje|tvá|máš|můžeš|najdeš|chceš|víš|zajdi|přijď|podívej)(?!\\p{L})", "flags": "iu", "message": "Tykání v projektu, který vyká." },
+    { "id": "cs.headline-exclamation", "pattern": "^[^\\n]*!\\s*$", "flags": "mu", "max": 0, "message": "Vykřičník na konci řádku; v nadpisu a úvodní větě ho vynech.", "enabled": false },
+    { "id": "cs.nbsp", "pattern": "(?<!\\p{L})[vkszouai] (?=\\p{L})", "flags": "iu", "message": "Za jednopísmennou předložkou nebo spojkou patří nezlomitelná mezera.", "enabled": false }
+  ]
+}

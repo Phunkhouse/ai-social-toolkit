@@ -1,0 +1,122 @@
+{
+  "contract": "social-package/1",
+  "packageId": "2026-W48",
+  "project": "Example app",
+  "period": { "from": "2026-11-23", "to": "2026-11-29", "timeZone": "Europe/Prague" },
+  "sources": {
+    "producer": "manual",
+    "exportedAt": "2026-11-20T09:00:00+01:00",
+    "stale": [],
+    "items": [
+      {
+        "ref": "saved-filters",
+        "kind": "release",
+        "title": "Saved filters",
+        "url": "https://example.org/changelog/saved-filters",
+        "validUntil": null,
+        "lastCheckedAt": "2026-11-20T09:00:00+01:00",
+        "ownerNote": "Most requested feature since spring.",
+        "data": { "version": "3.4.0", "releasedAt": "2026-11-19" }
+      }
+    ]
+  },
+  "research": [
+    {
+      "id": "saved-filters-requests",
+      "subjectRef": "saved-filters",
+      "lang": "cs",
+      "claim": "Uložené filtry byly od jara nejčastějším přáním uživatelů.",
+      "sources": [],
+      "status": "owner",
+      "note": "Owner's note in the export."
+    },
+    {
+      "id": "saved-filters-requests-en",
+      "subjectRef": "saved-filters",
+      "lang": "en",
+      "claim": "Saved filters have been the most requested feature since spring.",
+      "sources": [],
+      "status": "owner",
+      "note": "Owner's note in the export."
+    }
+  ],
+  "posts": [
+    {
+      "id": "2026-W48-whats-new-saved-filters-cs",
+      "pillar": "whats-new",
+      "language": "cs",
+      "siblingOf": null,
+      "intendedDate": "2026-11-24",
+      "intendedTime": "10:00",
+      "subjectRefs": ["saved-filters"],
+      "claimIds": ["saved-filters-requests"],
+      "copy": {
+        "networks": {
+          "facebook": {
+            "text": "Nově si můžeš filtr uložit a příště ho nemusíš skládat znovu. Od jara to bylo nejčastější přání, které nám chodilo.\n\nOd úterý 24. 11. je to ve verzi 3.4 pro všechny: https://example.org/changelog/saved-filters",
+            "hashtags": [],
+            "link": "https://example.org/changelog/saved-filters"
+          },
+          "bluesky": {
+            "text": "Filtr, který skládáš každé ráno, si teď můžeš uložit. Bylo to nejčastější přání od jara.",
+            "hashtags": [],
+            "link": "https://example.org/changelog/saved-filters"
+          }
+        },
+        "author": "claude",
+        "humour": "light"
+      },
+      "media": [
+        {
+          "path": "media/2026-W48-saved-filters.png",
+          "sha256": null,
+          "altText": "Snímek obrazovky: panel filtrů s tlačítkem Uložit filtr.",
+          "rights": { "basis": "own" }
+        }
+      ],
+      "checks": { "ranAt": null, "blockers": [], "warnings": [], "acknowledged": [] },
+      "freshness": { "validatedAt": "2026-11-20T09:00:00+01:00", "state": "valid" },
+      "review": { "status": "draft", "reviewer": null, "reviewedAt": null, "notes": "Owner asked to highlight this release." },
+      "trypost": { "contentHash": null, "postGroupId": null, "posts": [] }
+    },
+    {
+      "id": "2026-W48-whats-new-saved-filters-en",
+      "pillar": "whats-new",
+      "language": "en",
+      "siblingOf": "2026-W48-whats-new-saved-filters-cs",
+      "intendedDate": "2026-11-24",
+      "intendedTime": "10:00",
+      "subjectRefs": ["saved-filters"],
+      "claimIds": ["saved-filters-requests-en"],
+      "copy": {
+        "networks": {
+          "facebook": {
+            "text": "You can now save a filter and pick it up again next time, instead of building it from scratch. It's been the most requested feature since spring.\n\nIt's in version 3.4 for everyone from Tuesday 24 November: https://example.org/changelog/saved-filters",
+            "hashtags": [],
+            "link": "https://example.org/changelog/saved-filters"
+          },
+          "bluesky": {
+            "text": "That filter you rebuild every morning? You can save it now. Most requested feature since spring.",
+            "hashtags": [],
+            "link": "https://example.org/changelog/saved-filters"
+          }
+        },
+        "author": "claude",
+        "humour": "light"
+      },
+      "media": [
+        {
+          "path": "media/2026-W48-saved-filters.png",
+          "sha256": null,
+          "altText": "Screenshot: the filter panel with a Save filter button.",
+          "rights": { "basis": "own" }
+        }
+      ],
+      "checks": { "ranAt": null, "blockers": [], "warnings": [], "acknowledged": [] },
+      "freshness": { "validatedAt": "2026-11-20T09:00:00+01:00", "state": "valid" },
+      "review": { "status": "draft", "reviewer": null, "reviewedAt": null, "notes": "" },
+      "trypost": { "contentHash": null, "postGroupId": null, "posts": [] }
+    }
+  ],
+  "checks": { "ranAt": null, "blockers": [], "warnings": [], "acknowledged": [] }
+}

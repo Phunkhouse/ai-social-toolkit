@@ -1,0 +1,17 @@
+{
+  "lang": "en",
+  "note": "Mechanical warnings (W1) for English copy. Patterns are JavaScript regular expressions. A rule with 'max' warns only when it matches more than that many times. 'when' limits a rule to a project setting. Projects disable rules by id in config.json (lint.disable).",
+  "rules": [
+    { "id": "en.ai-vocabulary", "pattern": "\\b(?:delv(?:e|es|ing)|elevat(?:e|es|ed|ing)|unlock(?:s|ed|ing)?|unleash(?:es|ed|ing)?|empower(?:s|ed|ing)?|supercharg(?:e|es|ed|ing)|harness(?:es|ed|ing)?)\\b", "flags": "i", "message": "Generic AI vocabulary. Use the plain verb." },
+    { "id": "en.empty-praise", "pattern": "\\b(?:seamless(?:ly)?|robust|cutting[- ]edge|game[- ]chang(?:er|ing)|revolutionary|next[- ]level|world[- ]class|best[- ]in[- ]class)\\b", "flags": "i", "message": "Empty praise. Say what it does." },
+    { "id": "en.filler", "pattern": "in today's (?:fast-paced|digital|ever-changing) world|in the ever-evolving (?:landscape|world)|let's dive in|\\bdive into\\b|buckle up|look no further|at the end of the day", "flags": "i", "message": "Filler phrase. Start with the point." },
+    { "id": "en.hype", "pattern": "must[- ]see|hidden gem|you won't believe|\\bmind[- ]blowing\\b", "flags": "i", "message": "Hype. Give a reason instead." },
+    { "id": "en.not-just", "pattern": "\\bit'?s not just\\b[^.!?\\n]*,\\s*it'?s\\b", "flags": "i", "message": "'It's not just X, it's Y' reads as generated. State Y." },
+    { "id": "en.whether-youre", "pattern": "\\bwhether you'?re\\b", "flags": "i", "message": "'Whether you're X or Y' is a template structure. Talk to one reader." },
+    { "id": "en.robotic-intro", "pattern": "^(?:hey there|hi (?:there|friends|everyone|all)|hello (?:everyone|friends))\\b|\\bwe'?re (?:so )?(?:excited|thrilled|delighted|proud) to (?:announce|share|introduce)\\b|\\bbig news\\b|welcome to our (?:page|profile)", "flags": "im", "message": "Robotic introduction. Start with the point." },
+    { "id": "en.engagement-bait", "pattern": "\\b(?:thoughts|agree)\\?|what do you think\\?|drop a comment|let us know in the comments|tag a friend|share if you|like if you|smash that", "flags": "i", "message": "Engagement bait. Ask only a question worth answering." },
+    { "id": "en.em-dash", "pattern": "—", "flags": "", "max": 1, "message": "More than one em dash. Use a full stop or a comma." },
+    { "id": "en.variant-uk", "when": { "variant": "en-US" }, "pattern": "\\b(?:colour(?:s|ed|ful)?|favourite(?:s)?|organis(?:e|es|ed|ing|ation)|centre(?:s)?|theatre(?:s)?|analys(?:e|es|ed|ing)|behaviour(?:s)?)\\b", "flags": "i", "message": "UK spelling in a US-English project." },
+    { "id": "en.variant-us", "when": { "variant": "en-GB" }, "pattern": "\\b(?:color(?:s|ed|ful)?|favorite(?:s)?|organiz(?:e|es|ed|ing|ation)|center(?:s)?|theater(?:s)?|analyz(?:e|es|ed|ing)|behavior(?:s)?)\\b", "flags": "i", "message": "US spelling in a UK-English project." }
+  ]
+}

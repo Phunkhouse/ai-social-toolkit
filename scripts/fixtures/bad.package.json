@@ -1,0 +1,66 @@
+{
+  "contract": "social-package/1",
+  "packageId": "2026-W48-bad",
+  "project": "Example app",
+  "period": { "from": "2026-11-23", "to": "2026-11-29", "timeZone": "Europe/Prague" },
+  "sources": {
+    "producer": "manual",
+    "exportedAt": "2026-11-01T09:00:00+01:00",
+    "items": [
+      { "ref": "launch-event", "kind": "event", "title": "Launch evening", "url": null, "validUntil": "2026-11-25T19:00:00+01:00" }
+    ]
+  },
+  "research": [
+    {
+      "id": "venue-history",
+      "subjectRef": "launch-event",
+      "lang": "cs",
+      "claim": "Sál byl otevřen v roce 1932.",
+      "sources": [{ "url": "https://www.example-database.com/venue/1", "publisher": "Example DB", "accessedAt": "2026-11-20" }],
+      "status": "conflicting",
+      "note": "Another source says 1934."
+    }
+  ],
+  "posts": [
+    {
+      "id": "2026-W48-bad-cs",
+      "pillar": "whats-new",
+      "language": "cs",
+      "intendedDate": "2026-11-27",
+      "intendedTime": "10:00",
+      "subjectRefs": ["launch-event", "missing-item"],
+      "claimIds": ["venue-history", "no-such-claim"],
+      "copy": {
+        "networks": {
+          "facebook": {
+            "text": "Ahoj, tady Example! S radostí vám oznamujeme jedinečný večer!!! 🎉🎉 Byl/a jsi u toho? Co na to říkáte? Přijď ve čtvrtek 24. 11. v 7:30 PM. Revoluční. Víc na https://evil.example.net/x",
+            "link": null
+          },
+          "bluesky": {
+            "text": "Ahoj, tady Example! S radostí vám oznamujeme jedinečný večer!!! 🎉🎉 Byl/a jsi u toho? Co na to říkáte? Přijď ve čtvrtek 24. 11. v 7:30 PM. Revoluční. Tohle je už moc dlouhý text pro Bluesky, protože pokračuje dál a dál a dál a dál a dál a dál a dál a dál a dál a dál a dál a dál a dál a dál a dál a dál a dál a dál a dál a dál a dál a dál a dál a dál."
+          }
+        }
+      },
+      "media": [{ "path": "media/poster.jpg", "altText": "", "rights": { "basis": "permission" } }],
+      "checks": { "blockers": [], "warnings": [], "acknowledged": [] },
+      "review": { "status": "draft" },
+      "trypost": { "contentHash": "sha256:abc", "posts": [] }
+    },
+    {
+      "id": "2026-W48-bad-cs",
+      "pillar": "whats-new",
+      "language": "en",
+      "intendedDate": "2026-12-05",
+      "subjectRefs": [],
+      "claimIds": [],
+      "copy": {
+        "networks": {
+          "x": { "text": "Hey there! We're thrilled to announce a seamless, game-changing launch — it's not just a party, it's a movement — join us Monday 24 November. Thoughts?" }
+        }
+      },
+      "checks": { "blockers": [], "warnings": [], "acknowledged": [] },
+      "review": { "status": "draft" }
+    }
+  ],
+  "checks": { "blockers": [], "warnings": [], "acknowledged": [] }
+}

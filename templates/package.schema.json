@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "social-package/1",
+  "title": "Social package",
+  "description": "Everything one period's posts may say: source items, research claims, posts, checks and TryPost IDs. Projects may add fields under sources.items[].data, posts[].graphic and posts[].extra; base fields are never removed or renamed.",
+  "type": "object",
+  "required": ["contract", "packageId", "project", "period", "sources", "research", "posts", "checks"],
+  "properties": {
+    "contract": { "const": "social-package/1" },
+    "packageId": { "type": "string", "description": "Usually the ISO week, e.g. 2026-W47" },
+    "project": { "type": "string" },
+    "period": {
+      "type": "object",
+      "required": ["from", "to", "timeZone"],
+      "properties": {
+        "from": { "type": "string", "format": "date" },
+        "to": { "type": "string", "format": "date" },
+        "timeZone": { "type": "string", "examples": ["Europe/Prague"] }
+      }
+    },
+    "sources": {
+      "type": "object",
+      "required": ["producer", "exportedAt", "items"],
+      "properties": {
+        "producer": { "type": "string", "description": "The source adapter: a command, script or 'manual'" },
+        "exportedAt": { "type": "string", "format": "date-time" },
+        "stale": { "type": "array", "items": { "type": "string" }, "description": "Sources not fresh enough; their items are left out" },
+        "items": { "type": "array", "items": { "$ref": "#/$defs/item" } }
+      }
+    },
+    "research": { "type": "array", "items": { "$ref": "#/$defs/claim" } },
+    "posts": { "type": "array", "items": { "$ref": "#/$defs/post" } },
+    "checks": { "$ref": "#/$defs/checks" }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "required": ["ref", "kind", "title"],
+      "properties": {
+        "ref": { "type": "string", "description": "Stable short key used by posts and claims" },
+        "kind": { "type": "string", "examples": ["event", "release", "article", "offer", "film"] },
+        "title": { "type": "string" },
+        "url": { "type": ["string", "null"] },
+        "validUntil": { "type": ["string", "null"], "description": "Date or date-time after which the item is no longer true" },
+        "lastCheckedAt": { "type": ["string", "null"], "format": "date-time" },
+        "ownerNote": { "type": ["string", "null"] },
+        "data": { "type": "object", "description": "Project-specific fields from the adapter" }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "required": ["id", "subjectRef", "lang", "claim", "sources", "status"],
+      "properties": {
+        "id": { "type": "string" },
+        "subjectRef": { "type": "string" },
+        "lang": { "type": "string", "enum": ["cs", "en"] },
+        "claim": { "type": "string" },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["url", "accessedAt"],
+            "properties": {
+              "url": { "type": "string" },
+              "publisher": { "type": "string" },
+              "revision": { "type": ["string", "null"] },
+              "accessedAt": { "type": "string", "format": "date" }
+            }
+          }
+        },
+        "status": { "enum": ["confirmed", "single-source", "conflicting", "owner"] },
+        "note": { "type": "string" }
+      }
+    },
+    "network": {
+      "type": "object",
+      "required": ["text"],
+      "properties": {
+        "text": { "type": "string" },
+        "hashtags": { "type": "array", "items": { "type": "string" } },
+        "link": { "type": ["string", "null"] }
+      }
+    },
+    "media": {
+      "type": "object",
+      "required": ["path", "altText", "rights"],
+      "properties": {
+        "path": { "type": "string" },
+        "sha256": { "type": ["string", "null"] },
+        "altText": { "type": "string" },
+        "rights": {
+          "type": "object",
+          "required": ["basis"],
+          "properties": {
+            "basis": { "enum": ["own", "permission", "licence", "public-domain"] },
+            "holder": { "type": "string" },
+            "permission": { "type": "string" },
+            "licence": { "type": "string" },
+            "sourceUrl": { "type": "string" },
+            "recordedAt": { "type": "string" },
+            "credit": { "type": "string" }
+          }
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "required": ["id", "message"],
+      "properties": {
+        "id": { "type": "string" },
+        "message": { "type": "string" },
+        "rule": { "type": "string" },
+        "network": { "type": "string" },
+        "lang": { "type": "string" },
+        "source": { "type": "string", "description": "Which checker wrote it: toolkit, project or manual" }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "properties": {
+        "ranAt": { "type": ["string", "null"] },
+        "blockers": { "type": "array", "items": { "$ref": "#/$defs/finding" } },
+        "warnings": { "type": "array", "items": { "$ref": "#/$defs/finding" } },
+        "acknowledged": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "reason", "by", "at"],
+            "properties": { "id": { "type": "string" }, "reason": { "type": "string" }, "by": { "type": "string" }, "at": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "post": {
+      "type": "object",
+      "required": ["id", "pillar", "language", "intendedDate", "subjectRefs", "claimIds", "copy", "checks", "review"],
+      "properties": {
+        "id": { "type": "string", "description": "<packageId>-<pillar>[-<subject>][-<lang>]; unique for ever" },
+        "pillar": { "type": "string" },
+        "language": { "enum": ["cs", "en"] },
+        "siblingOf": { "type": ["string", "null"], "description": "The other-language post with the same facts" },
+        "intendedDate": { "type": "string", "format": "date" },
+        "intendedTime": { "type": ["string", "null"], "pattern": "^\\d{2}:\\d{2}$" },
+        "subjectRefs": { "type": "array", "items": { "type": "string" } },
+        "claimIds": { "type": "array", "items": { "type": "string" } },
+        "copy": {
+          "type": "object",
+          "properties": {
+            "networks": {
+              "type": "object",
+              "propertyNames": { "enum": ["instagram", "facebook", "threads", "bluesky", "x", "linkedin", "mastodon"] },
+              "additionalProperties": { "$ref": "#/$defs/network" }
+            },
+            "author": { "enum": ["claude", "owner"] },
+            "humour": { "enum": ["none", "little", "light", "most"] }
+          }
+        },
+        "media": { "type": "array", "items": { "$ref": "#/$defs/media" } },
+        "graphic": { "type": "object", "description": "Project-specific render data" },
+        "extra": { "type": "object", "description": "Project-specific fields" },
+        "checks": { "$ref": "#/$defs/checks" },
+        "freshness": {
+          "type": "object",
+          "properties": {
+            "validatedAt": { "type": ["string", "null"] },
+            "state": { "enum": ["unchecked", "valid", "needs-revalidation", "invalid"] }
+          }
+        },
+        "review": {
+          "type": "object",
+          "required": ["status"],
+          "properties": {
+            "status": { "enum": ["draft", "approved", "dropped"] },
+            "reviewer": { "type": ["string", "null"] },
+            "reviewedAt": { "type": ["string", "null"] },
+            "notes": { "type": "string" }
+          }
+        },
+        "trypost": {
+          "type": "object",
+          "properties": {
+            "contentHash": { "type": ["string", "null"], "description": "sha256 of the network texts as sent; see scripts/check-package.mjs --hash" },
+            "postGroupId": { "type": ["string", "null"] },
+            "posts": {
+              "type": "array",
+              "items": { "type": "object", "properties": { "network": { "type": "string" }, "postId": { "type": "string" }, "accountId": { "type": "string" } } }
+            }
+          }
+        }
+      }
+    }
+  }
+}

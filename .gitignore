@@ -1,0 +1,10 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+# Real packages are working files with project data; only examples are committed.
+*.package.json
+!templates/examples/*.json
+!scripts/fixtures/*.json
+*.manual.md
