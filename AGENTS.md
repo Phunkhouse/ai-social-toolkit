@@ -34,6 +34,7 @@ When adding or changing a script, update this section with its exact command and
 - Keep diffs focused. Record lasting trade-offs in `docs/decisions/` (copy `template.md`, next free number).
 - Name commits `type: short imperative summary`, using lowercase `feat`, `fix`, `docs`, `refactor`, `test` or `chore` as appropriate.
 - Before finishing, run `./scripts/validate.sh`, update affected documentation and commands, and mention unrelated changes without folding them into the task.
+- **Releases are annotated tags only:** `git tag -a vX.Y.Z -m "vX.Y.Z: <theme>"` on a `main` commit whose CI passed, then `git push origin vX.Y.Z`. Do not create GitHub Releases. Tag or push only when the owner asks.
 - **This repository is public.** Do not commit secrets, `.env` files, real week packages, TryPost IDs, account handles that are not public, or personal data. Examples use invented data (`example.org`).
 
 ## Pull requests
